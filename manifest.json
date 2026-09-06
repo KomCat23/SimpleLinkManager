@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "Менеджер ссылок",
+  "version": "1.0",
+  "description": "Хранит список ссылок и открывает их",
+  "permissions": ["storage", "tabs"],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
