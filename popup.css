@@ -1,0 +1,119 @@
+body{
+	width: 400px; 
+	height: 300px; 
+	padding: 10px; 
+	font-family: Arial, sans-serif;
+	margin: 0; 
+	background-color: black;
+}
+.textarea{
+	width: 93%; 
+	height: 100px; 
+	padding: 6px; 
+	font-size: 12px; 
+	resize: none; 
+	margin-bottom: 8px;
+}
+.begin-title{
+	color: white;
+	margin-top: 0; 
+	font-size: 17px;
+}
+.github-button{
+	background-color: black;
+	color: white;
+}
+.save-btn{
+	background-color: black;
+	color: white;
+	border: none;
+	width: 100%; padding: 8px; 
+	margin-top: 4px; 
+	cursor: pointer; 
+	font-weight: bold; 
+	border-radius: 4px;
+}
+.open-all-btn{
+	background-color: black;
+	color: white;
+	border: none;
+	width: 100%; padding: 8px; 
+	margin-top: 4px; 
+	cursor: pointer; 
+	font-weight: bold; 
+	border-radius: 4px;
+}
+.link-list{
+	margin-top: 10px; 
+	max-height: 120px; 
+	overflow-y: auto; 
+	padding-left: 0; 
+	list-style: none; 
+}
+.link-item{
+	display: flex; 
+	justify-content: space-between; 
+	align-items: center; 
+	padding: 5px; 
+	margin-bottom: 4px; 
+	background: #fff; 
+	border: 2px solid #ddd; 
+	border-radius: 3px; 
+	font-size: 11px;
+}
+.link-text{
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	max-width: 180px; 
+	color: #2196F3; 
+	cursor: pointer; 
+	text-decoration: underline;
+}
+/* Блок управления файлами */
+.file-actions {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f9f9f9; /* Слегка выделяем зону */
+  border-radius: 4px;
+  border: 1px dashed #ccc;
+}
+
+/* Кнопки экспорта */
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.file-btn {
+  flex: 1;
+  padding: 6px;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  border: 1px solid #adadad;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.file-btn:hover {
+  background-color: #d4d4d4;
+}
+
+/* Зона импорта */
+.import-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.import-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+.import-input {
+  font-size: 12px;
+}

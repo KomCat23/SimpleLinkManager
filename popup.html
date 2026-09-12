@@ -2,26 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <style>
-    body { width: 260px; padding: 10px; font-family: Arial, sans-serif; margin: 0; background: #f9f9f9; }
-    h3 { margin-top: 0; font-size: 14px; color: #333; }
-    textarea { width: 93%; height: 100px; padding: 6px; font-size: 12px; resize: none; margin-bottom: 8px; }
-    button { width: 100%; padding: 8px; margin-top: 4px; cursor: pointer; font-weight: bold; border-radius: 4px; }
-    .save-btn { background-color: #2196F3; color: white; border: none; }
-    .open-all-btn { background-color: #4CAF50; color: white; border: none; margin-top: 10px; }
-    .link-list { margin-top: 10px; max-height: 120px; overflow-y: auto; padding-left: 0; list-style: none; }
-    .link-item { display: flex; justify-content: space-between; align-items: center; padding: 5px; margin-bottom: 4px; background: #fff; border: 1px solid #ddd; border-radius: 3px; font-size: 11px; }
-    .link-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; color: #2196F3; cursor: pointer; text-decoration: underline; }
-  </style>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h3>Вставьте ваши ссылки (каждую с новой строки):</h3>
-  <textarea id="linksInput" placeholder="example.com&#10;google.com"></textarea>
+  <h3 class="begin-title"> Вставьте ваши ссылки </h3>
+  <textarea id="linksInput" class="textarea" placeholder="example.com&#10;google.com"></textarea>
   <button id="saveBtn" class="save-btn">Сохранить список</button>
+  
+  <!-- Новый блок для работы с файлами TXT и JSON -->
+  <div class="file-actions">
+    <div class="export-buttons">
+      <button id="exportTxtBtn" class="file-btn">Экспорт в TXT</button>
+      <button id="exportJsonBtn" class="file-btn">Экспорт в JSON</button>
+    </div>
+    
+    <div class="import-zone">
+      <label for="importFile" class="import-label">Импорт из TXT / JSON:</label>
+      <input type="file" id="importFile" class="import-input" accept=".txt,.json">
+    </div>
+  </div>
   
   <ul id="linksList" class="link-list"></ul>
   
   <button id="openAllBtn" class="open-all-btn">ОТКРЫТЬ ВСЕ ССЫЛКИ СРАЗУ</button>
+
+  <button id="githubBUTTON"class="github-button">Ссылка на Github</button>
 
   <script src="popup.js"></script>
 </body>

@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Менеджер ссылок",
+  "name": "SimpleLinkManager",
   "version": "1.0",
-  "description": "Хранит список ссылок и открывает их",
+  "description": "Simple extension to manage links (stores and opens them)",
   "permissions": ["storage", "tabs"],
   "browser_action": {
     "default_popup": "popup.html"
