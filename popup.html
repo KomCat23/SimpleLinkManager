@@ -1,15 +1,17 @@
 <!DOCTYPE html>
+<!-- постарался закоментить всё что нужно... -->
 <html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
+  <!-- приветствие -->
   <h3 class="begin-title"> Вставьте ваши ссылки </h3>
+  <!-- текстовое поле для вводы ссылок -->
   <textarea id="linksInput" class="textarea" placeholder="example.com&#10;google.com"></textarea>
-  <button id="saveBtn" class="save-btn">Сохранить список</button>
   
-  <!-- Новый блок для работы с файлами TXT и JSON -->
+  <!-- блок для работы с файлами TXT и JSON -->
   <div class="file-actions">
     <div class="export-buttons">
       <button id="exportTxtBtn" class="file-btn">Экспорт в TXT</button>
@@ -23,9 +25,9 @@
   </div>
   
   <ul id="linksList" class="link-list"></ul>
-  
+  <!-- кнопка открытия всех ссылок -->
   <button id="openAllBtn" class="open-all-btn">ОТКРЫТЬ ВСЕ ССЫЛКИ СРАЗУ</button>
-
+  <!-- кнопка с ссылкой на исходный код в гитхабе -->
   <button id="githubBUTTON"class="github-button">Ссылка на Github</button>
 
   <script src="popup.js"></script>

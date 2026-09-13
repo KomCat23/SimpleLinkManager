@@ -1,4 +1,4 @@
-body{
+body{ /*ну тут понятно*/
 	width: 400px; 
 	height: 300px; 
 	padding: 10px; 
@@ -6,7 +6,8 @@ body{
 	margin: 0; 
 	background-color: black;
 }
-.textarea{
+
+.textarea{ /*поле ссылками*/
 	width: 93%; 
 	height: 100px; 
 	padding: 6px; 
@@ -14,26 +15,20 @@ body{
 	resize: none; 
 	margin-bottom: 8px;
 }
-.begin-title{
+
+.begin-title{ /*начальный текст*/
 	color: white;
 	margin-top: 0; 
 	font-size: 17px;
 }
-.github-button{
+
+.github-button{ /*кнопка "Ссылка на Github"*/
 	background-color: black;
 	color: white;
 }
-.save-btn{
-	background-color: black;
-	color: white;
-	border: none;
-	width: 100%; padding: 8px; 
-	margin-top: 4px; 
-	cursor: pointer; 
-	font-weight: bold; 
-	border-radius: 4px;
-}
-.open-all-btn{
+
+
+.open-all-btn{ /*кнопка "ОТКРЫТЬ ВСЕ ССЫЛКИ СРАЗУ"*/
 	background-color: black;
 	color: white;
 	border: none;
@@ -43,13 +38,15 @@ body{
 	font-weight: bold; 
 	border-radius: 4px;
 }
-.link-list{
+
+.link-list{ /*поле с ссылками*/
 	margin-top: 10px; 
 	max-height: 120px; 
 	overflow-y: auto; 
 	padding-left: 0; 
 	list-style: none; 
 }
+
 .link-item{
 	display: flex; 
 	justify-content: space-between; 
@@ -61,6 +58,7 @@ body{
 	border-radius: 3px; 
 	font-size: 11px;
 }
+
 .link-text{
 	white-space: nowrap; 
 	overflow: hidden; 
@@ -70,48 +68,46 @@ body{
 	cursor: pointer; 
 	text-decoration: underline;
 }
-/* Блок управления файлами */
-.file-actions {
+
+.file-actions { /*все что ниже*/
   margin: 10px 0;
   padding: 10px;
-  background-color: #f9f9f9; /* Слегка выделяем зону */
+  background-color: white;
   border-radius: 4px;
   border: 1px dashed #ccc;
 }
 
-/* Кнопки экспорта */
-.export-buttons {
+.export-buttons { /*Поле где лежит всё ниже*/
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.file-btn {
+.file-btn { /*кнопки "ЭКСПОРТ в ТХТ" и "ЭКСПОРТ в JSON"*/
   flex: 1;
   padding: 6px;
   cursor: pointer;
-  background-color: #e0e0e0;
-  border: 1px solid #adadad;
+  background-color: white;
+  border: 1px solid black;
   border-radius: 4px;
   font-size: 12px;
   transition: background 0.2s;
 }
 
-.file-btn:hover {
-  background-color: #d4d4d4;
+.file-btn:hover { /*При наводке на кнопки "ЭКСПОРТ в ТХТ" и "ЭКСПОРТ в JSON" красиво меняет цвет кнопки*/
+  background-color: gray;
 }
 
-/* Зона импорта */
 .import-zone {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.import-label {
+.import-label { /*Текст "Импорт из TXT / JSON:"*/
   font-size: 12px;
   font-weight: bold;
-  color: #333;
+  color: black;
 }
 
 .import-input {

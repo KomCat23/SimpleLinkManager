@@ -1,18 +1,19 @@
+//Коментарии написаны в третьем лице, чтобы было понятно как работает код...
 const linksInput = document.getElementById('linksInput');
 const saveBtn = document.getElementById('saveBtn');
 const openAllBtn = document.getElementById('openAllBtn');
 const linksList = document.getElementById('linksList');
 
-// Элементы для работы с файлами
+//Элементы для работы с файлами
 const exportTxtBtn = document.getElementById('exportTxtBtn');
 const exportJsonBtn = document.getElementById('exportJsonBtn');
 const importFile = document.getElementById('importFile');
 const githubButton = document.getElementById('githubBUTTON');
 
-// Строго Firefox API
+//Строго для фаерфокса
 const ff = browser;
 
-// Правильное форматирование ссылок
+//Правильно форматирует ссылку для фаерфокса
 function fixUrl(url) {
   url = url.trim();
   if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
@@ -21,7 +22,7 @@ function fixUrl(url) {
   return url;
 }
 
-// Рендерим кликабельный список под текстовым полем
+//Рендерит кликабельный список под текстовым полем
 function renderList(linksArray) {
   linksList.innerHTML = '';
   linksArray.forEach(url => {
@@ -35,7 +36,7 @@ function renderList(linksArray) {
     span.className = 'link-text';
     span.textContent = url;
     
-    // Клик по отдельной ссылке открывает её в новой вкладке
+    //Кликает по отдельной ссылке и открывает её в новой вкладке
     span.addEventListener('click', () => {
       ff.tabs.create({ url: fixedUrl });
     });
@@ -45,22 +46,22 @@ function renderList(linksArray) {
   });
 }
 
-// Получаем чистый массив ссылок из textarea
+//Получает чистый массив ссылок из текстового поля
 function getLinksArray() {
   return linksInput.value.split('\n').map(line => line.trim()).filter(line => line);
 }
 
-// Вспомогательная функция для автоматического скачивания файлов на ПК
+//Вспомогательная функция для автоматического скачивания файлов на комп
 function downloadFile(content, fileName, contentType) {
   const a = document.createElement("a");
   const file = new Blob([content], { type: contentType });
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   a.click();
-  URL.revokeObjectURL(a.href); // Очищаем оперативную память
+  URL.revokeObjectURL(a.href); //Очищает оперативную память(по больше нужно для моего пк)
 }
 
-// 1. Инициализация: подтягиваем сохраненные ссылки при открытии popup
+//Инициализирует сохраненные ссылки при открытии popup
 ff.storage.local.get(['savedLinks']).then((result) => {
   if (result.savedLinks) {
     linksInput.value = result.savedLinks.join('\n');
@@ -68,7 +69,7 @@ ff.storage.local.get(['savedLinks']).then((result) => {
   }
 }).catch(err => console.error('Ошибка загрузки данных:', err));
 
-// 2. Кнопка "Сохранить список" (ручной ввод в textarea)
+//Кнопка сохранения списков(ручной ввод в textarea)
 saveBtn.addEventListener('click', () => {
   const lines = getLinksArray();
   
@@ -78,7 +79,7 @@ saveBtn.addEventListener('click', () => {
   }).catch(err => console.error('Ошибка сохранения:', err));
 });
 
-// 3. Кнопка "ОТКРЫТЬ ВСЕ ССЫЛКИ СРАЗУ"
+//Кнопка открывающая все ссылки сразу
 openAllBtn.addEventListener('click', () => {
   const lines = getLinksArray();
   if (lines.length === 0) {
@@ -91,7 +92,7 @@ openAllBtn.addEventListener('click', () => {
   });
 });
 
-// 4. ЭКСПОРТ в формат TXT (каждая ссылка с новой строки)
+//Экспортирует в тхт файл
 exportTxtBtn.addEventListener('click', () => {
   const lines = getLinksArray();
   if (lines.length === 0) return alert('Список пуст, нечего экспортировать!');
@@ -100,7 +101,7 @@ exportTxtBtn.addEventListener('click', () => {
   downloadFile(textContent, 'links.txt', 'text/plain;charset=utf-8');
 });
 
-// 5. ЭКСПОРТ в формат JSON (в виде валидного массива строк)
+//Экспортирует в джсон файл
 exportJsonBtn.addEventListener('click', () => {
   const lines = getLinksArray();
   if (lines.length === 0) return alert('Список пуст, нечего экспортировать!');
@@ -109,7 +110,7 @@ exportJsonBtn.addEventListener('click', () => {
   downloadFile(jsonContent, 'links.json', 'application/json;charset=utf-8');
 });
 
-// 6. ИМПОРТ ИЗ ФАЙЛА (TXT или JSON)
+//Импорт тхт или джсон файла
 importFile.addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (!file) return;
@@ -120,7 +121,7 @@ importFile.addEventListener('change', (event) => {
     const fileContent = e.target.result.trim();
     let importedLinks = [];
 
-    // Определяем формат файла по расширению
+    //Определяет формат файла 
     if (file.name.endsWith('.json')) {
       try {
         const parsed = JSON.parse(fileContent);
@@ -134,11 +135,11 @@ importFile.addEventListener('change', (event) => {
         return;
       }
     } else {
-      // Если файл TXT — бьем его по переносам строк
+      //Если это тхт файл, делает всё с новой строчки
       importedLinks = fileContent.split('\n').map(line => line.trim()).filter(line => line);
     }
 
-    // Если ссылки найдены — автоматически сохраняем их и обновляем UI
+    //Если ссылки найдены — автоматически сохраняет их и обновляет окно
     if (importedLinks.length > 0) {
       ff.storage.local.set({ savedLinks: importedLinks }).then(() => {
         linksInput.value = importedLinks.join('\n');
@@ -149,14 +150,14 @@ importFile.addEventListener('change', (event) => {
       alert('В выбранном файле не найдено ссылок.');
     }
     
-    // Сбрасываем значение инпута, чтобы можно было загрузить тот же файл повторно
+    //Сбрасывает значение инпута, чтобы можно было загрузить тот же файл повторно
     importFile.value = '';
   };
 
   reader.readAsText(file);
 });
-
+//Кнопка с ссылкой на исходный код на гитхабе
 githubButton.addEventListener('click', function() {
-    // Указываем нужный URL (внешний сайт или внутреннюю страницу)
-    chrome.tabs.create({ url: 'https://github.com/KomCat23/FreeLinkSaver' });
+    //Открывает ссылку на гитхаб
+    chrome.tabs.create({ url: 'https://github.com/KomCat23/SimpleLinkManager' });
 });
