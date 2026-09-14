@@ -1,6 +1,5 @@
 //Коментарии написаны в третьем лице, чтобы было понятно как работает код...
 const linksInput = document.getElementById('linksInput');
-const saveBtn = document.getElementById('saveBtn');
 const openAllBtn = document.getElementById('openAllBtn');
 const linksList = document.getElementById('linksList');
 
